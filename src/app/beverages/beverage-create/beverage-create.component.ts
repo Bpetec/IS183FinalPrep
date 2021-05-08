@@ -15,11 +15,14 @@ export class BeverageCreateComponent implements OnInit {
   constructor(private router: Router, private beverageService: BeverageService) { }
 
   ngOnInit() {
-
+    this.beverage = {};
   }
 
   async createBeverage(beverage: Object) {
-
+    const resp = await this.beverageService.addBeverage(beverage);
+    if (resp) {
+      this.router.navigate(['/beverage']);
+    }
   }
 
 }
